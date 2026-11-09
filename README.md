@@ -1,5 +1,6 @@
 # Example 网站洁净室复刻
 
+[![CI](https://github.com/yyds8170-ctrl/craft-example-rebuild/actions/workflows/ci.yml/badge.svg)](https://github.com/yyds8170-ctrl/craft-example-rebuild/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue.svg)](LICENSE)
 [![method](https://img.shields.io/badge/method-clean--room%20rebuild-green.svg)](#复刻流程)
 [![platform](https://img.shields.io/badge/platform-HTML%20%7C%20CSS-lightgrey.svg)](#目录结构)
@@ -48,6 +49,11 @@ python3 -m http.server 8000
 rebuild-example/
 ├── index.html
 ├── css/style.css
+├── .github/workflows/ci.yml  # CI：结构校验 + 渲染冒烟
+├── tests/validate.mjs        # 结构校验（18 项）
+├── CHANGELOG.md
+├── CITATION.cff
+├── VERSION
 ├── LICENSE          # PolyForm Noncommercial 1.0.0
 ├── NOTICE
 └── evidence/        # 取证与对照截图

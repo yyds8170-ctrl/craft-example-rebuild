@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Example Domain</title>
+  <meta name="description" content="Clean-room rebuild of an example domain page, produced only from externally visible behavior: screenshots, measured layout, and design tokens.">
+  <meta name="theme-color" content="#eeeeee">
+  <meta property="og:title" content="Example Domain (clean-room rebuild)">
+  <meta property="og:description" content="A clean-room rebuild built from external behavior only.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main class="column">
+    <!-- 屏幕阅读器标题：视觉复刻保持无可见标题，兼顾无障碍 -->
+    <h1 class="sr-only">Example Domain</h1>
+
     <!-- 书本图标：对应取证 outline 中的 44x44 svg，打开的书+右页引号 -->
     <svg class="book-icon" width="44" height="44" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+         stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true" focusable="false">
       <!-- 左页 -->
       <path d="M12 6.2C10.2 5.2 7.8 5 5 5.4V19c2.8-.4 5.2-.2 7 .8z"/>
       <!-- 右页 -->
@@ -32,7 +40,8 @@
     </p>
 
     <!-- 链接：颜色 #000ee -->
-    <a class="more" href="https://www.iana.org/help/example-domains">Learn more</a>
+    <a class="more" href="https://www.iana.org/help/example-domains"
+       rel="noopener external">Learn more</a>
   </main>
 </body>
 </html>

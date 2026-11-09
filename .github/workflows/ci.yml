@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: 结构校验
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 运行结构校验
+        run: node tests/validate.mjs
+
+  render-smoke:
+    name: 渲染冒烟测试
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装 Chrome
+        uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+      - name: headless 渲染截图
+        run: |
+          set -e
+          "${{ steps.setup-chrome.outputs.chrome-path }}" --headless --no-sandbox \
+            --disable-gpu --hide-scrollbars --window-size=1280,900 \
+            --screenshot=/tmp/shot.png "index.html"
+          test -s /tmp/shot.png
+          echo "渲染成功，截图大小：$(wc -c < /tmp/shot.png) 字节"
