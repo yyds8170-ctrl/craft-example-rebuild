@@ -3,6 +3,12 @@
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 规范，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)，许可证为 PolyForm Noncommercial 1.0.0。
 
+## [1.2.0] - 2026-11-09
+
+### 新增
+- 自包含 WCAG 对比度检查（`tests/contrast.mjs`，零依赖）：实现相对亮度与对比度公式，验证正文、链接、注释、图标均达 WCAG AA。
+- CI 新增「WCAG 对比度检查」任务，结构校验扩展至 19 项。
+
 ## [1.1.0] - 2026-11-09
 
 ### 新增

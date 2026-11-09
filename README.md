@@ -43,14 +43,22 @@ python3 -m http.server 8000
 # 浏览器访问 http://localhost:8000
 ```
 
+## 质量检查（零依赖）
+
+```bash
+node tests/validate.mjs   # 结构与关键内容校验（19 项）
+node tests/contrast.mjs   # WCAG 对比度，全部达 AA
+```
+
 ## 目录结构
 
 ```text
 rebuild-example/
 ├── index.html
 ├── css/style.css
-├── .github/workflows/ci.yml  # CI：结构校验 + 渲染冒烟
-├── tests/validate.mjs        # 结构校验（18 项）
+├── .github/workflows/ci.yml  # CI：结构校验 + WCAG对比度 + 渲染冒烟
+├── tests/validate.mjs        # 结构校验（19 项）
+├── tests/contrast.mjs        # WCAG 对比度检查（零依赖）
 ├── CHANGELOG.md
 ├── CITATION.cff
 ├── VERSION

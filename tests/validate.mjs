@@ -13,7 +13,8 @@ const check = (name, fn) => {
 };
 
 // 必需文件
-for (const f of ["index.html", "css/style.css", "LICENSE", "NOTICE", "README.md", "VERSION"]) {
+for (const f of ["index.html", "css/style.css", "tests/contrast.mjs",
+                  "LICENSE", "NOTICE", "README.md", "VERSION"]) {
   check(`存在 ${f}`, () => assert.ok(existsSync(join(root, f))));
 }
 
