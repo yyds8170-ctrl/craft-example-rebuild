@@ -1,0 +1,23 @@
+NOTICE
+======
+
+craft-example-rebuild
+Copyright (c) 2026 洋洋 (GitHub: yyds8170-ctrl)
+Licensed under the PolyForm Noncommercial License 1.0.0
+(see the LICENSE file for the full terms)
+
+------------------------------------------------------------------
+Clean-room rebuild
+------------------------------------------------------------------
+
+This repository is an independent, clean-room rebuild produced only from
+externally visible behavior of the original website: full-page screenshots,
+measured layout, and design tokens (fonts, sizes, colors, spacing).
+
+The original site's HTML, CSS rules, scripts, requests, and source code were
+neither read nor copied. No third-party source code is included in this
+repository.
+
+All third-party names, marks, and identifiers belong to their respective
+owners and are used here only for descriptive and educational purposes.
+This project is not affiliated with, endorsed by, or sponsored by them.

@@ -1,0 +1,58 @@
+/* 设计 token 全部来自 craft-anything web_site_capture 取证（clean-room） */
+:root {
+  --bg: #eeeeee;            /* backgrounds */
+  --text: #000000;          /* text_colors */
+  --link: #000ee;           /* 链接颜色 */
+  --content-width: 416px;   /* max_widths */
+  --font: system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  /* 取证 outline：图标 box 顶部 y=181，列从约 y=181 开始 */
+  padding: 181px 16px 32px;
+}
+
+.column {
+  width: 100%;
+  max-width: var(--content-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.book-icon {
+  color: #6b6b6b;
+  margin-bottom: 32px;       /* spacing 32px */
+}
+
+.lead {
+  font-size: 16px;           /* font_sizes 16px */
+  line-height: 1.5;
+  margin: 0 0 16px;          /* spacing 16px */
+}
+
+.note {
+  font-size: 14px;           /* font_sizes 14px */
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 16px;
+}
+
+.more {
+  font-size: 16px;
+  color: var(--link);
+  text-decoration: underline;
+  margin-top: 14px;          /* spacing 14px */
+}
+.more:visited { color: var(--link); }
