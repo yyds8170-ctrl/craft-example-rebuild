@@ -9,14 +9,24 @@
 
 > **维护者 / Maintainer：洋洋（[yyds8170-ctrl](https://github.com/yyds8170-ctrl)）**
 >
-> 本仓库是独立的学习/研究项目，与目标网站及任何第三方**无隶属、无背书、无赞助关系**；第三方名称与标识归各自权利人，本项目仅做指示性说明。详见 [NOTICE](NOTICE)。
+> 本仓库是独立的学习/研究项目，与目标网站及任何第三方**无隶属、无背书、无赞助关系**；第三方名称与标识归各自权利人，本项目仅作指示性说明。详见 [NOTICE](NOTICE)。
+
+## 目录
+
+- [复刻流程](#复刻流程)
+- [关键设计 token](#关键设计-token来自取证)
+- [对照结果](#对照结果)
+- [如何运行](#如何运行)
+- [质量检查](#质量检查零依赖)
+- [目录结构](#目录结构-1)
+- [许可证](#许可证)
 
 ## 复刻流程
 
 1. **取证（Craft Anything）**：在单个浏览器会话内对目标网站做 `web_site_capture`，产出全页截图、设计 token、布局大纲与精确坐标。
-2. **手工编码（编码代理）**：仅依据取证证据，从零写出 `index.html` 与 `css/style.css`。
-3. **渲染对照**：headless 浏览器渲染复刻版，与原版做像素级量化对比。
-4. **迭代修正**：根据差异图修正图标样式与垂直位置，再渲染验证。
+2. **手工实现（编码代理）**：仅依据取证证据，从零写出 `index.html` 与 `css/style.css`。
+3. **渲染对照**：用 headless 浏览器渲染复刻版，与原版做像素级量化对比。
+4. **迭代修正**：根据差异结果修正图标样式与垂直位置，再渲染验证。
 
 ## 关键设计 token（来自取证）
 
@@ -30,15 +40,14 @@
 
 ## 对照结果
 
-- 背景色完全一致；内容列水平范围仅差 1–2px；差异像素占比约 **3.5%**（差异主要来自有意精简的多语言内容，而非样式）。
+- 背景色完全一致；内容列水平范围仅差 1–2px；差异像素占比约 **3.5%**，差异主要来自有意精简的多语言内容，而非样式。
 - 对照证据见 `evidence/`：原版/复刻截图、差异热力图、图标放大图。
 
 ## 如何运行
 
-直接用浏览器打开 `index.html`，或：
+直接用浏览器打开 `index.html`，或通过本地静态服务访问：
 
 ```bash
-# 本地起一个静态服务
 python3 -m http.server 8000
 # 浏览器访问 http://localhost:8000
 ```
@@ -56,15 +65,15 @@ node tests/contrast.mjs   # WCAG 对比度，全部达 AA
 rebuild-example/
 ├── index.html
 ├── css/style.css
-├── .github/workflows/ci.yml  # CI：结构校验 + WCAG对比度 + 渲染冒烟
+├── .github/workflows/ci.yml  # CI：结构校验 + WCAG 对比度 + 渲染冒烟
 ├── tests/validate.mjs        # 结构校验（19 项）
 ├── tests/contrast.mjs        # WCAG 对比度检查（零依赖）
 ├── CHANGELOG.md
 ├── CITATION.cff
 ├── VERSION
-├── LICENSE          # PolyForm Noncommercial 1.0.0
+├── LICENSE                   # PolyForm Noncommercial 1.0.0
 ├── NOTICE
-└── evidence/        # 取证与对照截图
+└── evidence/                 # 取证与对照截图
 ```
 
 ## 许可证
