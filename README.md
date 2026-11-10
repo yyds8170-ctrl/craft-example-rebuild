@@ -5,7 +5,7 @@
 [![method](https://img.shields.io/badge/method-clean--room%20rebuild-green.svg)](#复刻流程)
 [![platform](https://img.shields.io/badge/platform-HTML%20%7C%20CSS-lightgrey.svg)](#目录结构)
 
-基于 **Craft Anything 引擎取证 + 豆包手工编码**完成的洁净室（clean-room）网站复刻示例：只观察目标网站的外部可见行为，不读取其源码，独立写出可运行的 HTML/CSS，再与原版量化对照、迭代修正。
+基于 **Craft Anything 引擎取证 + 编码代理手工实现**完成的洁净室（clean-room）网站复刻示例：只观察目标网站的外部可见行为，不读取其源码，独立写出可运行的 HTML/CSS，再与原版量化对照、迭代修正。
 
 > **维护者 / Maintainer：洋洋（[yyds8170-ctrl](https://github.com/yyds8170-ctrl)）**
 >
@@ -14,7 +14,7 @@
 ## 复刻流程
 
 1. **取证（Craft Anything）**：在单个浏览器会话内对目标网站做 `web_site_capture`，产出全页截图、设计 token、布局大纲与精确坐标。
-2. **手工编码（豆包）**：仅依据取证证据，从零写出 `index.html` 与 `css/style.css`。
+2. **手工编码（编码代理）**：仅依据取证证据，从零写出 `index.html` 与 `css/style.css`。
 3. **渲染对照**：headless 浏览器渲染复刻版，与原版做像素级量化对比。
 4. **迭代修正**：根据差异图修正图标样式与垂直位置，再渲染验证。
 
