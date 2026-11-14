@@ -43,4 +43,4 @@ jobs:
             --disable-gpu --hide-scrollbars --window-size=1280,900 \
             --screenshot=/tmp/shot.png "index.html"
           test -s /tmp/shot.png
-          echo "渲染成功，截图大小：$(wc -c < /tmp/shot.png) 字节"
+          echo "render OK, screenshot size: $(wc -c < /tmp/shot.png) bytes"

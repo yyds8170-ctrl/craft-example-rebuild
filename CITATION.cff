@@ -15,7 +15,9 @@ keywords:
   - rebuild
   - html
   - css
+  - responsive
   - accessibility
+  - web
 preferred-citation:
   type: software
   title: "craft-example-rebuild"

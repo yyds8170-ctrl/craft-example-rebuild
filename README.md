@@ -1,34 +1,49 @@
-# Example 网站洁净室复刻
+# craft-example-rebuild · 静态网页洁净室复刻
 
 [![CI](https://github.com/yyds8170-ctrl/craft-example-rebuild/actions/workflows/ci.yml/badge.svg)](https://github.com/yyds8170-ctrl/craft-example-rebuild/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue.svg)](LICENSE)
-[![method](https://img.shields.io/badge/method-clean--room%20rebuild-green.svg)](#复刻流程)
-[![platform](https://img.shields.io/badge/platform-HTML%20%7C%20CSS-lightgrey.svg)](#目录结构)
+[![version](https://img.shields.io/badge/version-v1.2.0-orange.svg)](https://github.com/yyds8170-ctrl/craft-example-rebuild/releases/tag/v1.2.0)
+[![tests](https://img.shields.io/badge/tests-19%20structure%20%2B%204%20contrast%20passing-brightgreen.svg)](#验证与证据)
 
-基于 **Craft Anything 引擎取证 + 编码代理手工实现**完成的洁净室（clean-room）网站复刻示例：只观察目标网站的外部可见行为，不读取其源码，独立写出可运行的 HTML/CSS，再与原版量化对照、迭代修正。
+仅依据目标网站的**外部可见行为**（全页截图、实测布局与设计 token）独立写出的静态网页洁净室（clean-room）复刻：不读取其源码，由编码代理从零实现 HTML/CSS，再与原版量化对照、迭代修正。
 
 > **维护者 / Maintainer：洋洋（[yyds8170-ctrl](https://github.com/yyds8170-ctrl)）**
 >
-> 本仓库是独立的学习/研究项目，与目标网站及任何第三方**无隶属、无背书、无赞助关系**；第三方名称与标识归各自权利人，本项目仅作指示性说明。详见 [NOTICE](NOTICE)。
+> 本仓库是独立的学习 / 研究项目，与目标网站及任何第三方**无隶属、无背书、无赞助关系**；第三方名称与标识归各自权利人，本项目仅作指示性说明。详见 [NOTICE](NOTICE)。
 
-## 目录
+![复刻首页演示截图](docs/screenshot.png)
 
-- [复刻流程](#复刻流程)
-- [关键设计 token](#关键设计-token来自取证)
-- [对照结果](#对照结果)
-- [如何运行](#如何运行)
-- [质量检查](#质量检查零依赖)
-- [目录结构](#目录结构-1)
-- [许可证](#许可证)
+## 特性亮点
 
-## 复刻流程
+- **洁净室实现**：只观察外部可见的截图、坐标与配色，不读取、不复制任何第三方源码。
+- **无障碍**：屏幕阅读器标题（`sr-only`）、外部链接 `rel`、SVG `focusable=false`、可见键盘焦点与 `prefers-reduced-motion` 支持。
+- **响应式**：桌面端与 390 CSS px 移动端布局均经过渲染对照，内容列与原版对齐。
+- **可访问性合规**：正文、链接、注释与图标配色均通过自包含的 WCAG AA 对比度检查（零依赖）。
+- **SEO / 元信息**：`meta description`、`theme-color` 与 Open Graph 标签齐备。
 
-1. **取证（Craft Anything）**：在单个浏览器会话内对目标网站做 `web_site_capture`，产出全页截图、设计 token、布局大纲与精确坐标。
-2. **手工实现（编码代理）**：仅依据取证证据，从零写出 `index.html` 与 `css/style.css`。
-3. **渲染对照**：用 headless 浏览器渲染复刻版，与原版做像素级量化对比。
-4. **迭代修正**：根据差异结果修正图标样式与垂直位置，再渲染验证。
+## 快速开始
 
-## 关键设计 token（来自取证）
+克隆后通过本地静态服务访问：
+
+```bash
+git clone https://github.com/yyds8170-ctrl/craft-example-rebuild.git
+cd craft-example-rebuild
+python3 -m http.server 8000
+# 浏览器访问 http://localhost:8000
+```
+
+也可直接用浏览器打开 `index.html` 查看静态页面。
+
+## 命令 / 设计 token 参考
+
+### 常用检查命令
+
+```bash
+node tests/validate.mjs   # 结构与关键内容校验（19 项）
+node tests/contrast.mjs   # WCAG 对比度检查（4 组配色，全部达 AA）
+```
+
+### 取证设计 token
 
 | 项目 | 取值 |
 | --- | --- |
@@ -38,43 +53,11 @@
 | 字号 | 主文 `16px` / 辅助 `14px` |
 | 内容列宽 | `416px` |
 
-## 对照结果
+## 验证与证据
 
-- 背景色完全一致；内容列水平范围仅差 1–2px；差异像素占比约 **3.5%**，差异主要来自有意精简的多语言内容，而非样式。
-- 对照证据见 `evidence/`：原版/复刻截图、差异热力图、图标放大图。
-
-## 如何运行
-
-直接用浏览器打开 `index.html`，或通过本地静态服务访问：
-
-```bash
-python3 -m http.server 8000
-# 浏览器访问 http://localhost:8000
-```
-
-## 质量检查（零依赖）
-
-```bash
-node tests/validate.mjs   # 结构与关键内容校验（19 项）
-node tests/contrast.mjs   # WCAG 对比度，全部达 AA
-```
-
-## 目录结构
-
-```text
-rebuild-example/
-├── index.html
-├── css/style.css
-├── .github/workflows/ci.yml  # CI：结构校验 + WCAG 对比度 + 渲染冒烟
-├── tests/validate.mjs        # 结构校验（19 项）
-├── tests/contrast.mjs        # WCAG 对比度检查（零依赖）
-├── CHANGELOG.md
-├── CITATION.cff
-├── VERSION
-├── LICENSE                   # PolyForm Noncommercial 1.0.0
-├── NOTICE
-└── evidence/                 # 取证与对照截图
-```
+- **像素对照**：背景色完全一致；内容列水平范围仅差 1–2px；差异像素占比约 **3.5%**，差异主要来自有意精简的多语言内容，而非样式。
+- **持续集成**：结构校验、WCAG 对比度检查与 headless 渲染冒烟测试在 GitHub Actions 上持续运行。
+- **对照产物**见 `evidence/`：原版 / 复刻截图、差异热力图与图标放大图；本仓库首页截图见 `docs/screenshot.png`。
 
 ## 许可证
 
